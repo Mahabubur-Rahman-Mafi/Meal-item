@@ -1,0 +1,19 @@
+.card-info{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+/* // Medium devices (tablets, 768px and up) */
+@media screen and (max-width: 768px) { 
+    .card-info{
+        grid-template-columns: repeat(2, 1fr);
+ }
+    }
+/* // Small devices (landscape phones, 576px and up) */
+@media screen and (max-width: 576px) { 
+   .card-info{
+     grid-template-columns: repeat(1, 1fr);
+   }
+}
+
+
