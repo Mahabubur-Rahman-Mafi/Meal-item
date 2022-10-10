@@ -1,14 +1,17 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import MealFood from './MealFood'
+import Name from "./Name";
 
 const Meal = () => {
-    // const food = useLoaderData();
-    // console.log(food.meals);
+    const foods = useLoaderData();
     // const 
     return (
-        <div>
-            {/* {food} */}
-        </div>
+      <div className="card-info">
+        {foods.meals.map((food) => (
+          <MealFood key={food.idMeal} food={food}></MealFood>
+        ))}
+      </div>
     );
 };
 

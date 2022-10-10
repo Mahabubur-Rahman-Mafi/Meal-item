@@ -8,6 +8,7 @@ import CategoryDetails from "./component/CategoryDetails";
 import { NavItem } from "react-bootstrap";
 import Meal from "./component/Meal";
 import Food from "./component/Food";
+import FoodMeals from './component/FoodMeals'
 function App() {
   const router = createBrowserRouter([
     {
@@ -32,7 +33,7 @@ function App() {
             );
           },
         },
-        
+
         {
           path: "/category/:categoryName",
           loader: async ({ params }) => {
@@ -40,26 +41,41 @@ function App() {
               `https://www.themealdb.com/api/json/v1/1/filter.php?c=${params.categoryName}`
             );
           },
-          element: <CategoryDetails></CategoryDetails>
+          element: <CategoryDetails></CategoryDetails>,
         },
         {
-          path: "/category/:name/:id", element: <Food></Food>, loader: async({ params }) =>{
-            return fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.id}`)
-          }
-        },
-
-
-        {
-          path: "meals", element: <Meals></Meals>,
-        },
-        {
-          path: '/meals/:mealsText', element: <Meal></Meal>, 
-          loader: async({ params }) =>{
+          path: "/category/:name/:id",
+          element: <Food></Food>,
+          loader: async ({ params }) => {
             return fetch(
-              `https://www.themealdb.com/api/json/v1/1/search.php?f=${params.mealsText}`
+              `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.id}`
             );
-          }
-        }
+          },
+        },
+
+        {
+          path: "meals",
+          element: <Meals></Meals>,
+          children: [
+            {
+              path: "/meals/:mealsText",
+              element: <Meal></Meal>,
+              loader: async ({ params }) => {
+                return fetch(
+                  `https://www.themealdb.com/api/json/v1/1/search.php?f=${params.mealsText}`
+                );
+              },
+            },
+            {
+              path: "/link/:name/:nameId",
+              element: <FoodMeals></FoodMeals>,
+              loader: ({ params }) =>
+                fetch(
+                  `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.nameId}`
+                ),
+            },
+          ],
+        },
       ],
     },
   ]);

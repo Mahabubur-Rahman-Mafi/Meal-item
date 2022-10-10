@@ -3,6 +3,7 @@ import { Col, Row } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
 import './Food.css'
 const Food = () => {
+  
     const food = useLoaderData();
     const foodDetails = food.meals[0]
     console.log(foodDetails);

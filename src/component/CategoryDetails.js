@@ -1,9 +1,7 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import CategoryFood from './CategoryFood';
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+
 
 const CategoryDetails = () => {
     const posts = useLoaderData();

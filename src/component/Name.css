@@ -1,5 +1,5 @@
 .meals-heading{
-    display: grid;
-    justify-content: space-around;
-    gap: 30px;
+    text-align: center;
+    padding: 20px 0px;
+    margin-bottom: 20px !important;
 }

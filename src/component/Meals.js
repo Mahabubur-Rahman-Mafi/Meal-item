@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import Name from './Name';
 import { useNavigate } from "react-router-dom";
 import './Name.css'
@@ -15,6 +15,7 @@ const Meals = () => {
     return (
       <div className='meals-heading'>
         <Name handleButton={handleButton}></Name>
+        <Outlet></Outlet>
       </div>
     );
 };
